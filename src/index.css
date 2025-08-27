@@ -123,7 +123,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-subheading;
   }
 }
 
@@ -164,4 +164,22 @@ All colors MUST be HSL.
   .form-black-theme .text-primary {
     color: hsl(0 84% 60%);
   }
+}
+
+@font-face {
+  font-family: 'DIN Condensed Medium';
+  src: url('/fonts/DINCondensed-Medium.woff2') format('woff2'),
+       url('/fonts/DINCondensed-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Brendon';
+  src: url('/fonts/Brendon.woff2') format('woff2'),
+       url('/fonts/Brendon.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

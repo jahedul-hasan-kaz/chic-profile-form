@@ -4,6 +4,7 @@ import { CalendarIcon, User, Mail, Phone, Calendar, Users, Loader2, CreditCard }
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useState, lazy, Suspense } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
@@ -58,6 +59,7 @@ export function ProfileForm() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showWelcome, setShowWelcome] = useState(false);
+  const [calendarOpen, setCalendarOpen] = React.useState(false);
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -144,7 +146,7 @@ export function ProfileForm() {
               loading="lazy"
             />
           </div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-header font-bold bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
             Create Your Profile
           </h1>
           <p className="text-gray-300 mt-2">
@@ -241,7 +243,7 @@ export function ProfileForm() {
                       <Calendar className="h-4 w-4 text-red-500" />
                       Date of Birth
                     </FormLabel>
-                    <Popover>
+                    <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
                       <PopoverTrigger asChild>
                         <FormControl>
                           <Button
@@ -265,7 +267,10 @@ export function ProfileForm() {
                         <CalendarComponent
                           mode="single"
                           selected={field.value}
-                          onSelect={field.onChange}
+                          onSelect={(date) => {
+                            field.onChange(date);
+                            setCalendarOpen(false); // Close the popover after selecting
+                          }}
                           disabled={(date) =>
                             date > new Date() || date < new Date("1900-01-01")
                           }

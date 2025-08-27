@@ -32,7 +32,7 @@ export function Welcome({ onBackToForm }: WelcomeProps) {
               alt="Yaki Ya Logo" 
               className="w-auto h-16 mx-auto mb-4 rounded-full"
             />
-            <h1 className="text-4xl font-bold text-white mb-4 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+            <h1 className="text-4xl font-header font-bold text-white mb-4 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
               Welcome to Yaki Ya!
             </h1>
             <div className="flex items-center justify-center gap-2 mb-4">
